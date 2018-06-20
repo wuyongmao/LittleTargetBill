@@ -1,5 +1,23 @@
 <template lang='pug'>
 .container
+	from
+		input.wanted(
+			placeholder='你的愿望'
+			:value='wanted'
+		)
+		input.total(
+			type='number'
+			placeholder='愿望金额'
+			:value='total'
+		)
+		input.income(
+			type='number'
+			placeholder='当前实际月收入'
+			:value='income'
+		)
+	button(
+		@click='goIndex'
+	) 完成
 </template>
 
 <script>
