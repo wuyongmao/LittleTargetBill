@@ -6,6 +6,6 @@ app.$mount()
 
 export default {
   config: {
-    navigationBarTitleText: '欢迎来到分享账单'
+    navigationBarTitleText: '请注册分享账单'
   }
 }

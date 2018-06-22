@@ -15,6 +15,6 @@ export default
 	methods:
 		clickConfirm: ->
 			this.$emit 'confirm',
-				price: parseInt this.price
+				price: parseFloat(this.price) * 1000 // 100 / 10
 				mark: this.marks[this.currentMarkIndex]
 			this.$emit 'close'
