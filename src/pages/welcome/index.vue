@@ -26,7 +26,7 @@
 
 <script>
 import index from './index.coffee'
-import card from '@/components/card'
+import card from '@/components/card/main'
 
 export default {
 	components: {

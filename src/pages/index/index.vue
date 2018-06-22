@@ -15,27 +15,44 @@
 			span.normal 100
 			span 天
 	.mark
-		button 远离梦想
+		button(@click='spendShow = true') 远离梦想
 		.money
 			span 一共消费
 			span.normal 100
 			span 元
 
 	.mark
-		button 靠近梦想
+		button(@click='incomeShow = true') 靠近梦想
 		.money
 			span 梦想基金达
 			span.normal 100
 			span 元
+
+	confirmSpend(
+		title='输入支出金额'
+		:show='spendShow'
+		:marks="['饭钱', '交通', '购物', '人情', '其他']"
+		@close='spendShow = false'
+		@confirm='clickConfirm(0, $event)'
+	)
+	confirmIncome(
+		title='输入收入金额'
+		:show='incomeShow'
+		:marks="['红包', '出售', '理财', '退款', '其他']"
+		@close='incomeShow = false'
+		@confirm='clickConfirm(1, $event)'
+	)
 </template>
 
 <script>
 import index from './index.coffee'
-// import card from '@/components/card'
+import confirmSpend from '@/components/confirm/spend/main'
+import confirmIncome from '@/components/confirm/income/main'
 
 export default {
 	components: {
-		// card
+		confirmSpend,
+		confirmIncome
 	},
 	...index,
 }

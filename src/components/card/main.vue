@@ -9,14 +9,16 @@
 </template>
 
 <script>
-import card from './card.coffee'
+import main from './main.coffee'
 
 export default {
-	...card
+	...main
 }
 </script>
 
 <style scoped lang='sass'>
+@import '~@/sass/main.sass'
+
 .card
 	display: flex
 	flex-direction: column
@@ -31,8 +33,7 @@ export default {
 		height: 90rpx
 		border: 4rpx solid #FED6A4
 		border-radius: 16rpx
-		border-box: box-sizing
-		padding-left: 40rpx
+		@include inputBorder
 		margin: 10rpx 0
 
 	.remind
