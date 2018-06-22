@@ -1,4 +1,20 @@
-import confirm from '@/mixin/components/confirm.coffee'
+import closeImg from '@/assets/close.png'
 
 export default
-	mixins: [confirm]
+	props:
+		title: String
+		show: Boolean
+		marks: Array
+
+	data: -> {
+		closeImg
+		price: ''
+		currentMarkIndex: 0
+	}
+
+	methods:
+		clickConfirm: ->
+			this.$emit 'confirm',
+				price: parseInt this.price
+				mark: this.marks[this.currentMarkIndex]
+			this.$emit 'close'

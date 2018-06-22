@@ -6,7 +6,7 @@
 		span.title {{title}}
 		input.input(
 			type='digit'
-			v-model='money'
+			v-model='price'
 			placeholder='0.00'
 		)
 		.marks

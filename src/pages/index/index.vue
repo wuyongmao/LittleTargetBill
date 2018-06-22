@@ -2,30 +2,30 @@
 .container
 	.total
 		span.target 离
-			span.underline {{target}}
+			span.underline {{main.target}}
 			| 还差
 			span.underline {{lastDays}}
 			| 天
 		.spend
-			span 本月消费
-			span.normal 100
+			span 还差
+			span.normal {{totalAway}}
 			span 元
 		.markDays
-			span 本月连续记账
-			span.normal 100
+			span 共记账
+			span.normal {{totalDays}}
 			span 天
 	.mark
-		button(@click='spendShow = true') 远离梦想
+		button(@click='spendShow = true') 支出--远离梦想
 		.money
-			span 一共消费
-			span.normal 100
+			span 共消费
+			span.normal {{totalSpend}}
 			span 元
 
 	.mark
-		button(@click='incomeShow = true') 靠近梦想
+		button(@click='incomeShow = true') 收入--靠近梦想
 		.money
 			span 梦想基金达
-			span.normal 100
+			span.normal {{totalIncome}}
 			span 元
 
 	confirmSpend(
@@ -91,7 +91,7 @@ export default {
 			.underline
 				color: #756766
 				border-bottom: 6rpx solid #F3944E
-				margin-right: 8rpx
+				margin: 0 40rpx 0 20rpx
 
 		.spend, .markDays
 			@include money

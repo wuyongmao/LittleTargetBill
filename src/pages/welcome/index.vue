@@ -7,17 +7,20 @@
 		title='输入你的愿望'
 		placeholder='请输入愿望'
 		remind='注：如“去日本”'
+		@input='inputCard(0, $event)'
 	)
 	card(
 		title='愿望的预算'
 		placeholder='请输入预算'
 		remind='注：如“5000”'
 		type='number'
+		@input='inputCard(1, $event)'
 	)
 	card(
 		title='月实际收入'
 		placeholder='请输入月收入'
 		type='number'
+		@input='inputCard(2, $event)'
 	)
 	button.click(
 		@click='goIndex'

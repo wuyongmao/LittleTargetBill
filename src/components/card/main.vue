@@ -4,6 +4,7 @@
 		input.input(
 			:type='type'
 			:placeholder='placeholder'
+			@input='$emit("input", $event)'
 		)
 		span.remind {{remind}}
 </template>
