@@ -1,7 +1,7 @@
 export default
 	data: ->
-		motto: 'Hello World'
-		userInfo: {}
+		target: '去日本'
+		lastDays: 100
 
 	methods:
 		goIndex: ->
@@ -10,4 +10,4 @@ export default
 
 	mounted: ->
 		# 如果是首次或相应场景值进来则前往欢迎页
-		wx.navigateTo {url: '../welcome/main'}
+		# wx.redirectTo {url: '../welcome/main'}
