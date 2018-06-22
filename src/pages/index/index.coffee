@@ -15,6 +15,8 @@ export default
 		totalSpend: -> this.main.listSpend.reduce ((pre, cur) -> pre + cur.price), 0 || 0
 		# 共收入
 		totalIncome: -> this.main.listIncome.reduce ((pre, cur) -> pre + cur.price), 0 || 0
+		# 还差多少天
+		lastDays: -> this.totalAway // this.dayIncome || 0
 
 	onShow: ->
 		this.main = wx.getStorageSync('main') ||
