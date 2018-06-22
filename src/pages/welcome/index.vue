@@ -3,20 +3,20 @@
 	img.title-img(
 		:src='titleImg'
 	)
-	card(
+	inputDream(
 		title='输入你的愿望'
 		placeholder='请输入愿望'
 		remind='注：如“去日本”'
 		@input='inputCard(0, $event)'
 	)
-	card(
+	inputDream(
 		title='愿望的预算'
 		placeholder='请输入预算'
 		remind='注：如“5000”'
 		type='number'
 		@input='inputCard(1, $event)'
 	)
-	card(
+	inputDream(
 		title='月实际收入'
 		placeholder='请输入月收入'
 		type='number'
@@ -29,11 +29,11 @@
 
 <script>
 import index from './index.coffee'
-import card from '@/components/card/main'
+import inputDream from '@/components/inputDream/main'
 
 export default {
 	components: {
-		card
+		inputDream
 	},
 	...index,
 }
@@ -51,5 +51,5 @@ export default {
 		height: 110rpx
 
 	.click
-		@include buttonHightlight
+		@extend .buttonHightlight
 </style>

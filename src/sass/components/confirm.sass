@@ -26,12 +26,12 @@
 			background: #FFF5C4
 
 		.input
+			@extend .inputBorder
 			width: 440rpx
 			height: 100rpx
 			border: 4rpx solid #FED6A4
 			border-radius: 10px
 			margin-top: 32rpx
-			@include inputBorder
 
 		.marks
 			display: flex
@@ -55,7 +55,7 @@
 				color: #F3944E
 
 		.click
-			@include buttonHightlight
+			@extend .buttonHightlight
 			width: 420rpx
 			height: 90rpx
 			margin-top: 0

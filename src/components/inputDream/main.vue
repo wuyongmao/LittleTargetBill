@@ -1,5 +1,5 @@
 <template lang='pug'>
-	.card
+	.inputDream
 		span.title {{title}}
 		input.input(
 			:type='type'
@@ -20,7 +20,7 @@ export default {
 <style scoped lang='sass'>
 @import '~@/sass/main.sass'
 
-.card
+.inputDream
 	display: flex
 	flex-direction: column
 	align-items: center
@@ -30,11 +30,11 @@ export default {
 		font-size: 36rpx
 
 	.input
+		@extend .inputBorder
 		width: 550rpx
 		height: 90rpx
 		border: 4rpx solid #FED6A4
 		border-radius: 16rpx
-		@include inputBorder
 		margin: 10rpx 0
 
 	.remind

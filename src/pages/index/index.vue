@@ -81,7 +81,7 @@ export default {
 		align-items: center
 		width: 100%
 		height: 33%
-		background: #FEF3AA
+		background-image: linear-gradient(-180deg, #FEF3AA 0%, #FFE888 100%)
 
 		.target
 			font-size: 48rpx
@@ -100,7 +100,7 @@ export default {
 		margin-top: 120rpx
 
 		button
-			@include buttonHightlight
+			@extend .buttonHightlight
 
 		.money
 			@include money
