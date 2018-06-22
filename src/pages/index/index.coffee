@@ -1,29 +1,30 @@
 export default
 	data: ->
-		main: wx.getStorageSync 'main'
+		main: ''
 		spendShow: false
 		incomeShow: false
 
 	computed:
-		# 还差多少钱
-		totalAway: -> this.main.budget + this.totalSpend - this.totalIncome - (this.dayIncome * this.totalDays)
-		# 共记账多少天
-		totalDays: -> (new Date().getTime()) // 1000 // (24 * 3600) - this.main.initialTimestampDay + 1
-		# 共消费
-		totalSpend: ->
-			return 0 if not this.main
-			this.main.listSpend.reduce ((pre, cur) -> pre + cur.price), 0
-		# 共收入
-		totalIncome: ->
-			return 0 if not this.main
-			this.main.listIncome.reduce ((pre, cur) -> pre + cur.price), 0
 		# 每日收入
 		dayIncome: -> this.main.income // 30
-		# 还差多少天
-		lastDays: -> this.totalAway // this.dayIncome
+		# 还差多少元
+		totalAway: -> this.main.budget + this.totalSpend - this.totalIncome - (this.dayIncome * this.totalDays) || ''
+		# 共记账多少天
+		totalDays: -> (new Date().getTime()) // 1000 // (24 * 3600) - this.main.initialTimestampDay + 1 || ''
+		# 共消费
+		totalSpend: -> this.main.listSpend.reduce ((pre, cur) -> pre + cur.price), 0 || 0
+		# 共收入
+		totalIncome: -> this.main.listIncome.reduce ((pre, cur) -> pre + cur.price), 0 || 0
 
-	mounted: ->
-		this.main = wx.getStorageSync 'main'
+	onShow: ->
+		this.main = wx.getStorageSync('main') ||
+			listSpend: []
+			listIncome: []
+
+	onReady: ->
+		if not this.main.target
+			wx.redirectTo
+				url: '/pages/regist/main'
 
 	methods:
 		clickConfirm: (type, payload) ->

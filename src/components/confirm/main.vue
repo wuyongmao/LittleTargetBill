@@ -7,7 +7,7 @@
 		input.input(
 			type='digit'
 			v-model='price'
-			placeholder='0.00'
+			placeholder='0'
 		)
 		.marks
 			button.mark(

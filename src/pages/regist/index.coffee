@@ -21,9 +21,8 @@ export default
 					listIncome: []
 					initialTimestampDay: (new Date()).getTime() // 1000 // (24 * 3600) # 起始的时间戳天
 				success: ->
-					console.log wx.getStorageSync 'main'
 					wx.redirectTo
-						url: '../welcome/main'
+						url: '/pages/index/main'
 				fail: (error) ->
 					wx.showToast
 						title: error
