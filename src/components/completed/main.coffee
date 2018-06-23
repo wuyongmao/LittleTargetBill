@@ -4,7 +4,7 @@ export default
 
 	methods:
 		clickCheck: ->
-			console.log 'check'
+			this.$emit('clickCheck')
 
 		clickAgain: ->
 			wx.removeStorage

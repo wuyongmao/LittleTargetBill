@@ -49,20 +49,29 @@
 	completed(
 		v-if='completedShow'
 		:totalDays='totalDays'
+		@clickCheck='clickCheck'
+	)
+
+	share(
+		v-if='shareShow'
+		:totalDays="totalDays"
+		:main="main"
 	)
 </template>
 
 <script>
 import index from './index.coffee'
-import confirmSpend from '@/components/confirm/main'
-import confirmIncome from '@/components/confirm/main'
-import completed from '@/components/completed/main'
+import confirmSpend from '@/components/confirm/index'
+import confirmIncome from '@/components/confirm/index'
+import completed from '@/components/completed/index'
+import share from '@/components/share/index'
 
 export default {
 	components: {
 		confirmSpend,
 		confirmIncome,
 		completed,
+		share,
 	},
 	...index,
 }

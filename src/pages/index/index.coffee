@@ -4,6 +4,7 @@ export default
 		spendShow: false
 		incomeShow: false
 		completedShow: false # 愿望完成
+		shareShow: false # 显示分享
 
 	computed:
 		# 每日收入
@@ -32,7 +33,8 @@ export default
 	mounted: ->
 		# 愿望实现
 		this.completedShow = true if this.lastDays < 1
-		this.completedShow = true
+		# this.completedShow = true
+		this.shareShow = true
 
 	methods:
 		clickConfirm: (type, payload) ->
@@ -65,3 +67,7 @@ export default
 							success: =>
 								wx.redirectTo
 									url: '/pages/regist/main'
+
+		clickCheck: ->
+			this.completedShow = false
+			this.shareShow = true
