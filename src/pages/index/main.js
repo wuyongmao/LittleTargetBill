@@ -6,6 +6,6 @@ app.$mount()
 
 export default {
 	config: {
-		navigationBarTitleText: '分享账单'
+		navigationBarTitleText: '小目标账单'
 	}
 }

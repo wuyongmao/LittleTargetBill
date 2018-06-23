@@ -16,12 +16,15 @@ export default
 		# 共收入
 		totalIncome: -> this.main.listIncome.reduce ((pre, cur) -> pre + cur.price), 0 || 0
 		# 还差多少天
-		lastDays: -> this.totalAway // this.dayIncome || 0
+		lastDays: ->
+			console.log (this.totalAway // this.dayIncome) || 0
+			this.totalAway // this.dayIncome || 0
 
 	onShow: ->
 		this.main = wx.getStorageSync('main') ||
 			listSpend: []
 			listIncome: []
+		console.log this.main
 
 	onReady: ->
 		if not this.main.target
@@ -47,3 +50,15 @@ export default
 						title: error
 						icon: 'none'
 						duration: 2000
+
+		clickCancel: ->
+			wx.showModal
+				title: '重要'
+				content: '放弃后不可恢复！'
+				success: (res) ->
+					if res.confirm
+						wx.removeStorage
+							key: 'main'
+							success: =>
+								wx.redirectTo
+									url: '/pages/regist/main'

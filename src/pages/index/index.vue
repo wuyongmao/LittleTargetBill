@@ -15,18 +15,20 @@
 			span.normal {{totalDays}}
 			span 天
 	.mark
-		button(@click='spendShow = true') 支出--远离梦想
+		button(@click='spendShow = true') 支出--远离小目标
 		.money
 			span 共消费
 			span.normal {{totalSpend}}
 			span 元
 
 	.mark
-		button(@click='incomeShow = true') 收入--靠近梦想
+		button(@click='incomeShow = true') 收入--靠近小目标
 		.money
-			span 梦想基金达
+			span 小目标基金达
 			span.normal {{totalIncome}}
 			span 元
+
+	button.cancel(@click='clickCancel') 放弃小目标
 
 	confirmSpend(
 		title='输入支出金额'
@@ -108,4 +110,16 @@ export default {
 			margin: 20rpx 0 0 160rpx
 			font-size: 36rpx
 			color: #F3944E
+
+	$cancelRB: 20rpx
+	.cancel
+		position: absolute
+		right: $cancelRB
+		bottom: $cancelRB
+		padding: 0
+		line-height: normal
+		border-radius: 0
+		font-size: 24rpx
+		color: red
+		background: transparent
 </style>

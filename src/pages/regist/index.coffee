@@ -36,9 +36,11 @@ export default
 				error = '请输入预算'
 			else if not this.income
 				error = '请输入月收入'
+			else if this.income // 30 is 0
+				error = '月收入不正确，请至少大于30吧'
 
 			wx.showToast
-				title: error ? '请前往你的愿望吧'
+				title: error ? '请前往你的小目标吧'
 				icon: 'none'
 				duration: 2000
 			error

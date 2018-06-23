@@ -1,6 +1,6 @@
 <template lang='pug'>
 .container
-	span 正在检索你的愿望...
+	span 正在检索你的小目标...
 </template>
 
 <script>

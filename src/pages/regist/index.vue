@@ -4,13 +4,13 @@
 		:src='titleImg'
 	)
 	inputDream(
-		title='输入你的愿望'
-		placeholder='请输入愿望'
+		title='输入你的小目标'
+		placeholder='请输入小目标'
 		remind='注：如“去日本”'
 		@input='inputCard(0, $event)'
 	)
 	inputDream(
-		title='愿望的预算'
+		title='小目标的预算'
 		placeholder='请输入预算'
 		remind='注：如“5000”'
 		type='number'
@@ -24,7 +24,7 @@
 	)
 	button.click(
 		@click='goIndex'
-	) 开始实现愿望
+	) 开始实现小目标
 </template>
 
 <script>
