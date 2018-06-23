@@ -4,10 +4,10 @@
 </template>
 
 <script>
-import index from './index.coffee'
+import main from './main.coffee'
 
 export default {
-	...index,
+	...main,
 }
 </script>
 

@@ -31,16 +31,19 @@ export default
 				url: '/pages/regist/main'
 
 	mounted: ->
-		# 愿望实现
-		this.completedShow = true if this.lastDays < 1
-		# this.completedShow = true
-		this.shareShow = true
+		this.checkCompleted()
 
 	methods:
+		# 检查是否完成
+		checkCompleted: ->
+			this.completedShow = this.lastDays < 1
+
+		# 点击支出或收入对话框确认
 		clickConfirm: (type, payload) ->
 			switch type
 				when 0 then this.main.listSpend.push payload
 				when 1 then this.main.listIncome.push payload
+			this.checkCompleted()
 			wx.setStorage
 				key: 'main'
 				data:
@@ -56,6 +59,7 @@ export default
 						icon: 'none'
 						duration: 2000
 
+		# 点击放弃小目标
 		clickCancel: ->
 			wx.showModal
 				title: '非常重要'
@@ -69,5 +73,4 @@ export default
 									url: '/pages/regist/main'
 
 		clickCheck: ->
-			this.completedShow = false
 			this.shareShow = true

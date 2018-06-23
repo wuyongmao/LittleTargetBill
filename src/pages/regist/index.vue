@@ -28,14 +28,14 @@
 </template>
 
 <script>
-import index from './index.coffee'
+import main from './main.coffee'
 import inputDream from '@/components/inputDream/main'
 
 export default {
 	components: {
 		inputDream
 	},
-	...index,
+	...main,
 }
 </script>
 

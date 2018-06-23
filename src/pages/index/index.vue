@@ -56,11 +56,12 @@
 		v-if='shareShow'
 		:totalDays="totalDays"
 		:main="main"
+		@close='shareShow=false'
 	)
 </template>
 
 <script>
-import index from './index.coffee'
+import main from './main.coffee'
 import confirmSpend from '@/components/confirm/index'
 import confirmIncome from '@/components/confirm/index'
 import completed from '@/components/completed/index'
@@ -73,7 +74,7 @@ export default {
 		completed,
 		share,
 	},
-	...index,
+	...main,
 }
 </script>
 

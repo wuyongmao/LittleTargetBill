@@ -11,29 +11,36 @@ export default
 	props:
 		main: Object
 		totalDays: Number
+
 	mounted: ->
 		this.draw()
 
 	methods:
 		draw: ->
 			ctx = wx.createCanvasContext config.canvasName
-
 			# 绘制背景色
 			ctx.setFillStyle('white')
 			ctx.fillRect(0, 0, config.canvasWidth, config.canvasHeight)
 
 			# 绘制图片
-			ctx.drawImage(group, 23, 23, 274, 268)
-			ctx.drawImage(qr,  218, 342, 88, 88)
+			left = 20
+			imgWidth = config.canvasWidth - 2 * left
+			console.log left, imgWidth, config.canvasWidth
+			ctx.drawImage(group, left, left, imgWidth, imgWidth)
+
+			qrWidth = 88
+			qrLeft = config.canvasWidth - left - qrWidth
+			ctx.drawImage(qr,  qrLeft, 340, qrWidth, qrWidth)
 
 			# 绘制文本
 			fontSize = 20
 			initialTop = 340
 			marginTop = 8
-			date = (new Date()).toLocaleString().match(/\d{4}\/\d{1,2}\/\d{1,2}/)[0]
+
+			date = new Date()
 			ctx.setFontSize(fontSize)
 			ctx.setFillStyle('#F3944E')
-			ctx.fillText(date, 16, initialTop)
+			ctx.fillText(date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日', 16, initialTop)
 			ctx.fillText('用愿望账单记账的第', 16, initialTop + (marginTop + fontSize) * 1)
 			ctx.fillText(this.totalDays + '天', 16, initialTop + (marginTop + fontSize) * 2)
 			ctx.fillText('成功存下了' + this.main.budget + '元', 16, initialTop + (marginTop + fontSize) * 3)
@@ -41,6 +48,7 @@ export default
 			ctx.setFontSize(12)
 			ctx.setFillStyle('#999')
 			ctx.fillText('长按识别小程序', 218, initialTop + (marginTop + fontSize) * 4)
+			# 直接绘制第二次无效
 			ctx.draw(false, this.trans)
 
 		# 转成图片
@@ -58,18 +66,23 @@ export default
 				success: (res) ->
 					config.exportImgPath = res.tempFilePath
 				fail: (res) ->
-					console.log(res)
+					console.log res
 
 		clickCheck: ->
 			wx.saveImageToPhotosAlbum
 				filePath:config.exportImgPath
-				success: (res) ->
+				success: (res) =>
 						wx.showModal
 							title: '存图成功'
 							content: '图片成功保存到相册了，去发朋友圈噻~'
-							showCancel:false
-							confirmText:'好哒'
-							confirmColor:'#F3944E'
-							success: (res) ->
-								console.log '点击确认'
+							cancelText: '好哒'
+							cancelColor: '#F3944E'
+							confirmText:'许愿去'
+							success: (res) =>
+								if res.confirm
+									wx.removeStorage
+										key: 'main'
+										success: =>
+											wx.redirectTo
+												url: '/pages/regist/main'
 
