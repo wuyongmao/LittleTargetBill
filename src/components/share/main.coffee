@@ -1,6 +1,12 @@
 import group from '@/assets/group.png'
 import qr from '@/assets/qr.jpg'
 
+config =
+	canvasName: 'shareCanvas'
+	canvasWidth:320
+	canvasHeight:512
+	exportImgPath: ''
+
 export default
 	props:
 		main: Object
@@ -10,11 +16,11 @@ export default
 
 	methods:
 		draw: ->
-			ctx = wx.createCanvasContext 'shareCanvas'
+			ctx = wx.createCanvasContext config.canvasName
 
 			# 绘制背景色
 			ctx.setFillStyle('white')
-			ctx.fillRect(0, 0, 320, 512)
+			ctx.fillRect(0, 0, config.canvasWidth, config.canvasHeight)
 
 			# 绘制图片
 			ctx.drawImage(group, 23, 23, 274, 268)
@@ -32,4 +38,38 @@ export default
 			ctx.fillText(this.totalDays + '天', 16, initialTop + (marginTop + fontSize) * 2)
 			ctx.fillText('成功存下了' + this.main.budget + '元', 16, initialTop + (marginTop + fontSize) * 3)
 			ctx.fillText(this.main.target + '的梦想基金', 16, initialTop + (marginTop + fontSize) * 4)
-			ctx.draw()
+			ctx.setFontSize(12)
+			ctx.setFillStyle('#999')
+			ctx.fillText('长按识别小程序', 218, initialTop + (marginTop + fontSize) * 4)
+			ctx.draw(false, this.trans)
+
+		# 转成图片
+		trans: ->
+			width = config.canvasWidth
+			height = config.canvasHeight
+			wx.canvasToTempFilePath
+				x: 0
+				y: 0
+				width: width
+				height: height
+				destWidth: width
+				destHeight:height
+				canvasId: config.canvasName
+				success: (res) ->
+					config.exportImgPath = res.tempFilePath
+				fail: (res) ->
+					console.log(res)
+
+		clickCheck: ->
+			wx.saveImageToPhotosAlbum
+				filePath:config.exportImgPath
+				success: (res) ->
+						wx.showModal
+							title: '存图成功'
+							content: '图片成功保存到相册了，去发朋友圈噻~'
+							showCancel:false
+							confirmText:'好哒'
+							confirmColor:'#F3944E'
+							success: (res) ->
+								console.log '点击确认'
+
