@@ -3,6 +3,7 @@ export default
 		main: ''
 		spendShow: false
 		incomeShow: false
+		completedShow: false # 愿望完成
 
 	computed:
 		# 每日收入
@@ -22,12 +23,16 @@ export default
 		this.main = wx.getStorageSync('main') ||
 			listSpend: []
 			listIncome: []
-		console.log this.main
 
 	onReady: ->
 		if not this.main.target
 			wx.redirectTo
 				url: '/pages/regist/main'
+
+	mounted: ->
+		# 愿望实现
+		this.completedShow = true if this.lastDays < 1
+		this.completedShow = true
 
 	methods:
 		clickConfirm: (type, payload) ->

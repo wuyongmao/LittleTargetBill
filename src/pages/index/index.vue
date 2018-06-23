@@ -31,30 +31,37 @@
 	button.cancel(@click='clickCancel') 放弃小目标
 
 	confirmSpend(
+		v-if='spendShow'
 		title='输入支出金额'
-		:show='spendShow'
-		:marks="['饭钱', '交通', '购物', '人情', '其他']"
+		:type='0'
 		@close='spendShow = false'
 		@confirm='clickConfirm(0, $event)'
 	)
+
 	confirmIncome(
+		v-if='incomeShow'
 		title='输入收入金额'
-		:show='incomeShow'
-		:marks="['红包', '出售', '理财', '退款', '其他']"
+		:type='1'
 		@close='incomeShow = false'
 		@confirm='clickConfirm(1, $event)'
+	)
+
+	completed(
+		v-if='completedShow'
 	)
 </template>
 
 <script>
 import index from './index.coffee'
-import confirmSpend from '@/components/confirm/spend/main'
-import confirmIncome from '@/components/confirm/income/main'
+import confirmSpend from '@/components/confirm/main'
+import confirmIncome from '@/components/confirm/main'
+import completed from '@/components/completed/main'
 
 export default {
 	components: {
 		confirmSpend,
-		confirmIncome
+		confirmIncome,
+		completed,
 	},
 	...index,
 }
@@ -68,7 +75,7 @@ export default {
 	justify-content: space-between
 	width: 480rpx
 	font-size: 40rpx
-	color: #F3944E
+	color: $mainTextColor
 
 	.normal
 		color: #756766
@@ -87,12 +94,12 @@ export default {
 
 		.target
 			font-size: 48rpx
-			color: #F3944E
+			color: $mainTextColor
 			text-align: center
 
 			.underline
 				color: #756766
-				border-bottom: 6rpx solid #F3944E
+				border-bottom: 6rpx solid $mainTextColor
 				margin: 0 40rpx 0 20rpx
 
 		.spend, .markDays
@@ -109,7 +116,7 @@ export default {
 			width: 320rpx
 			margin: 20rpx 0 0 160rpx
 			font-size: 36rpx
-			color: #F3944E
+			color: $mainTextColor
 
 	$cancelRB: 20rpx
 	.cancel

@@ -2,15 +2,24 @@ import closeImg from '@/assets/close.png'
 
 export default
 	props:
-		title: String
+		type: Number
 		show: Boolean
-		marks: Array
 
 	data: -> {
 		closeImg
+		marks: []
+		title: ''
 		price: ''
 		currentMarkIndex: 0
 	}
+
+	mounted: ->
+		if this.type is 0
+			this.marks = ['饭钱', '交通', '购物', '人情', '其他']
+			this.title = '输入支出金额'
+		else
+			this.marks = ['红包', '出售', '理财', '退款', '其他']
+			this.title = '输入收入金额'
 
 	methods:
 		clickConfirm: ->
