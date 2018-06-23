@@ -48,6 +48,7 @@
 
 	completed(
 		v-if='completedShow'
+		:totalDays='totalDays'
 	)
 </template>
 
