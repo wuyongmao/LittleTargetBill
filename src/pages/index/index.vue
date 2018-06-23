@@ -56,7 +56,7 @@
 		v-if='shareShow'
 		:totalDays="totalDays"
 		:main="main"
-		@close='shareShow=false'
+		@close='clickShareClose'
 	)
 </template>
 

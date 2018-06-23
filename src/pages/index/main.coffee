@@ -72,5 +72,11 @@ export default
 								wx.redirectTo
 									url: '/pages/regist/main'
 
+		# 点击前往查看
 		clickCheck: ->
 			this.shareShow = true
+
+		# 点击分享后的关闭功能
+		clickShareClose: ->
+			this.shareShow = false
+			this.completedShow = false

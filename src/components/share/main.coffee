@@ -25,7 +25,6 @@ export default
 			# 绘制图片
 			left = 20
 			imgWidth = config.canvasWidth - 2 * left
-			console.log left, imgWidth, config.canvasWidth
 			ctx.drawImage(group, left, left, imgWidth, imgWidth)
 
 			qrWidth = 88
@@ -80,6 +79,7 @@ export default
 							confirmText:'许愿去'
 							success: (res) =>
 								if res.confirm
+									this.$emit('close')
 									wx.removeStorage
 										key: 'main'
 										success: =>
