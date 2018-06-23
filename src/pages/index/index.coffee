@@ -16,9 +16,7 @@ export default
 		# 共收入
 		totalIncome: -> this.main.listIncome.reduce ((pre, cur) -> pre + cur.price), 0 || 0
 		# 还差多少天
-		lastDays: ->
-			console.log (this.totalAway // this.dayIncome) || 0
-			this.totalAway // this.dayIncome || 0
+		lastDays: -> this.totalAway // this.dayIncome || 0
 
 	onShow: ->
 		this.main = wx.getStorageSync('main') ||
@@ -53,7 +51,7 @@ export default
 
 		clickCancel: ->
 			wx.showModal
-				title: '重要'
+				title: '非常重要'
 				content: '放弃后不可恢复！'
 				success: (res) ->
 					if res.confirm
