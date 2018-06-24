@@ -10,7 +10,7 @@
 	"miniprogramRoot": "./dist/",
 	"compileType": "miniprogram",
 	"appid": "wx1df864e479abd472",
-	"projectname": "share-bill",
+	"projectname": "LittleTargetBill",
 	"condition": {
 		"search": {
 			"current": -1,
