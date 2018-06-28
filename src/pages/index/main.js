@@ -5,7 +5,7 @@ const app = new Vue(App)
 app.$mount()
 
 export default {
-	config: {
-		navigationBarTitleText: '小目标账单'
-	}
+  config: {
+    navigationBarTitleText: '小目标账单'
+  }
 }

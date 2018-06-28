@@ -9,7 +9,7 @@
 	},
 	"miniprogramRoot": "./dist/",
 	"compileType": "miniprogram",
-	"appid": "wx1df864e479abd472",
+	"appid": "wx9488bf7c45e14dd9",
 	"projectname": "LittleTargetBill",
 	"condition": {
 		"search": {

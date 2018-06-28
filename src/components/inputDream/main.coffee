@@ -1,8 +1,8 @@
 export default
-	props:
-		title: String
-		placeholder: String
-		remind: String
-		type:
-			type: String
-			default: -> 'text'
+  props:
+    title: String
+    placeholder: String
+    remind: String
+    type:
+      type: String
+      default: -> 'text'

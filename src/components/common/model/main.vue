@@ -1,23 +1,23 @@
 <template lang='pug'>
 .confirm(
-	v-if='show'
+  v-if='show'
 )
-	.content
-		span.title {{title}}
-		slot
-		.close(
-			@click='$emit("close")'
-		)
-			img.close-img(
-				:src="closeImg"
-			)
+  .content
+    span.title {{title}}
+    slot
+    .close(
+      @click='$emit("close")'
+    )
+      img.close-img(
+        :src="closeImg"
+      )
 </template>
 
 <script>
 import main from './main.coffee'
 
 export default {
-	...main
+  ...main
 }
 </script>
 
