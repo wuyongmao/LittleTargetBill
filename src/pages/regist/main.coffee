@@ -7,6 +7,14 @@ export default
     income: 0
     titleImg: titleImg
 
+  onLoad: ->
+    wx.showShareMenu({
+      withShareTicket: false
+    })
+
+  onShareAppMessage: ->
+    title: '一步一步，助你实现小目标！'
+
   methods:
     goIndex: ->
       return if this.dataError()

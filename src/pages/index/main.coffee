@@ -41,6 +41,14 @@ export default
   mounted: ->
     this.checkCompleted()
 
+  onLoad: ->
+    wx.showShareMenu({
+      withShareTicket: false
+    })
+
+  onShareAppMessage: ->
+    title: '一步一步，助你实现小目标！'
+
   methods:
     # 检查是否完成
     checkCompleted: ->
